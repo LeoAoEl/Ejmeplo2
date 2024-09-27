@@ -1,0 +1,55 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+const name = "Leonel";
+const pets = await getCollection("pets");
+---
+
+<MainLayout title="Home">
+  <h1>Bienvenido a Astro {name}</h1>
+
+  <section>
+    {
+      pets.map((pet) => {
+        const { slug, data } = pet;
+        const { name, image } = data;
+
+        return (
+          <a href={`/pets/${slug}`}>
+            <Image
+              src={`/${image}`}
+              alt={name}
+              width={48}
+              height={48}
+              quality={"mid"}
+              format={"avif"}
+              loading={"eager"}
+              transition:name={`image-${slug}`}
+            />
+
+            <h2
+              transition:name={`name-${slug}`}
+              class=" text-4xl text-white leading-tight"
+            >
+              {name}
+            </h2>
+          </a>
+        );
+      })
+    }
+  </section>
+</MainLayout>
+
+<style is:global>
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+  }
+</style>
