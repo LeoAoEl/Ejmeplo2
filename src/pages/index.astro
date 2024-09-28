@@ -4,10 +4,11 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 const name = "Leonel";
 const pets = await getCollection("pets");
+import Title from "../components/Title.astro";
 ---
 
 <MainLayout title="Home">
-  <h1>Bienvenido a Astro {name}</h1>
+  <Title title={`Bienvenido al Inicio ${name}`} />
 
   <section>
     {

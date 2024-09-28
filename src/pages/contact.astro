@@ -1,8 +1,10 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 const name = "Leonel";
+import Title from "../components/Title.astro";
 ---
 
 <MainLayout title="Contact">
-  <h1>Bienvenido a Contacto {name}</h1>
+  <h1></h1>
+  <Title title={`Bienvenido a Contacto ${name}`} />
 </MainLayout>
